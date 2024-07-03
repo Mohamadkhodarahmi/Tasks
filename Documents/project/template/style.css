@@ -1,0 +1,13 @@
+@import "bootstrap";
+@import "vazirmatn/Vazirmatn-font-face.css";
+
+body {
+    font-family: Vazirmatn, sans-serif;
+}
+.card:hover{
+background-color: cadetblue;
+}
+#navbar{
+    top: 0;
+
+}
