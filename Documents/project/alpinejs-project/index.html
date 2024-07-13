@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<div class="container" >
+  <div class="row" x-data="post">
+      <button @click="fetchData">click </button>
+  </div>
+
+</div>
+<template id="template" >
+  <div class="col-md-4 p-md-3" id="div">
+    <div class="card p-3 bg-white ">
+      <img src="paris.jpg" class="rounded" alt="cinque terre">
+      <span id="span" style="color: brown"> </span>
+      <h1 id="h1"></h1>
+      <p id="p" style="padding: 4px"></p>
+      <div class="btn-group col-1 pb-2">
+        <button type="button" id="btn_view" class="btn btn-outline-secondary">view</button>
+        <button type="button" id="btn_edit" class="btn btn-outline-secondary">edit</button>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script src="main.js" type="module"></script>
+
+</body>
+</html>
