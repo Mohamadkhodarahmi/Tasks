@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+    background-image: linear-gradient(to right, #9f660f, yellow ,powderblue);
+}
+#login{
+
+
+    padding-top: 200px;
+
+
+}
+button{
+    margin-left: 40px;
+
+}
+input{
+    border-radius: 6px;
+
+
+}
+nav{
+    background-color: gray;
+}
+.register{
+
+}
+nav{
+   position: sticky;
+}
