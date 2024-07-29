@@ -2,13 +2,12 @@
 include_once '../config.php';
 
 
-
-
 while ($user = $userResult->fetch_assoc()) {
     if($_POST['email'] == $user['email']) {
         if ($_POST['password'] == $user['password']) {
-            $_SESSION['login']=1;
             $_SESSION['id'] = $user['id'];
+            $_SESSION['login']=1;
+
             header("Location:../index.php");
             die;
         } else {

@@ -10,7 +10,8 @@ export default {
         "config.php",
         "./logout/**/*.{html,js,php}",
         "./profile.php",
-        "./cart.php"
+        "./cart.php",
+        "./cartpage.php"
     ],
 
     theme: {

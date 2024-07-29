@@ -25,14 +25,12 @@ include_once "config.php";
         </div>
     </div>
     <h3 class="text-xl font-bold text-gray-900 mt-4"><?=$row["productname"]?></h3>
-    <p class="text-gray-500 text-sm mt-2"><?=$row["description"]?></p>
+    <p class="text-gray-500 text-sm mt-2"><?=$row["descpription"]?></p>
     <div class="flex items-center justify-between mt-4">
         <span class="text-gray-900 font-bold text-lg">$<?=$row["price"]?> USD</span>
         <form method="post" action="./cart.php">
             <a type="submit" class="bg-gray-900 text-white py-2 px-4 rounded-full font-bold hover:bg-gray-800" href="cart.php?pro_id=<?=$row['id']?>" >Add to Cart</a>
-
         </form>
-
     </div>
 </div>
 <script src="cart.js" type="module"></script>
