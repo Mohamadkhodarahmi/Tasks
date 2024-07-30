@@ -21,7 +21,7 @@ include_once "config.php";
         <img class="object-cover w-full h-full" src="./public/img/<?= $row["image"] ?>" alt="Product">
         <div class="absolute inset-0 bg-black opacity-40"></div>
         <div class="absolute inset-0 flex items-center justify-center">
-            <button class="bg-white text-gray-900 py-2 px-6 rounded-full font-bold hover:bg-gray-300 " id="viewProduct">View Product</button>
+            <a type="submit" class="bg-white text-gray-900 py-2 px-6 rounded-full font-bold hover:bg-gray-300 " id="viewProduct" href="productview.php?pro_id=<?=$row['id']?>">View Product</a>
         </div>
     </div>
     <h3 class="text-xl font-bold text-gray-900 mt-4"><?=$row["productname"]?></h3>
@@ -33,7 +33,7 @@ include_once "config.php";
         </form>
     </div>
 </div>
-<script src="cart.js" type="module"></script>
+
 </body>
 </html>
 <?php

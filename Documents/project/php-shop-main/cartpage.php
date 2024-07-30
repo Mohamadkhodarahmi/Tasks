@@ -1,6 +1,7 @@
 <?php
 include_once 'config.php';
-include_once 'master/header.php'
+include_once 'master/header.php';
+if ($_SESSION['login']==1):
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,7 +26,17 @@ include_once 'master/header.php'
 </style>
 
 <body>
+
 <div class="h-screen bg-gray-100 pt-20">
+    <?php
+    if (isset($_COOKIE['itemdelete'])):
+        ?>
+        <div class="p-4 mb-4 text-sm mt-2 text-blue-800 rounded-lg bg-blue-100 dark:bg-black-800 dark:text-blue-400" role="alert">
+            <span class="font-medium"><?=$_COOKIE['itemdelete']?></span>
+        </div>
+    <?php
+    endif;
+    ?>
     <h1 class="mb-10 text-center text-2xl font-bold">Cart Items</h1>
     <div class="mx-auto max-w-5xl justify-center px-6 md:flex md:space-x-6 xl:px-0">
         <div class="rounded-lg md:w-2/3">
@@ -40,7 +51,7 @@ include_once 'master/header.php'
             <div class="flex justify-between">
                 <p class="text-lg font-bold">Total</p>
                 <div class="">
-                    <p class="mb-1 text-lg font-bold"><?=$a[0]['sum']?></p>
+                    <p class="mb-1 text-lg font-bold">$<?=$a[0]['sum']?> USD</p>
 <!--                    <p class="text-sm text-gray-700">including VAT</p>-->
                 </div>
             </div>
@@ -50,3 +61,11 @@ include_once 'master/header.php'
 </div>
 </body>
 </html>
+<?php
+else:
+    setcookie('gologin','please login ',time() + 3);
+    header('Location:./');
+endif;
+
+
+?>

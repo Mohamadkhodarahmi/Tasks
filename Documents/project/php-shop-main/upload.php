@@ -13,11 +13,4 @@ header('Location:./profile.php');
 
 
 
-//print_r($last);
-
-//print_r($_SESSION['id']);
-//echo $last['profile'];
-
-
-
 

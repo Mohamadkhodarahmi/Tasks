@@ -11,7 +11,8 @@ export default {
         "./logout/**/*.{html,js,php}",
         "./profile.php",
         "./cart.php",
-        "./cartpage.php"
+        "./cartpage.php",
+        "./productview.php"
     ],
 
     theme: {
