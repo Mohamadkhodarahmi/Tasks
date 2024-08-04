@@ -37,7 +37,7 @@ class PostController extends Controller
 
     public function show(Post $post): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        return view('posts.show')->with('post',$post);
+        return view('posts.show',compact('post'));
     }
 
     /**
@@ -58,7 +58,7 @@ class PostController extends Controller
     }
     public function edit(Post $post): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
-        return view ('posts.edit')->with('post',$post);
+        return view ('posts.edit',compact('post'));
     }
     public function destroy(Post $post)
     {

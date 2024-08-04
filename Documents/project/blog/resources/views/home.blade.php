@@ -11,12 +11,12 @@
 
 
     @forelse ($posts as $post)
-        <div class="card m-2 shadow-sm">
+        <div class="card m-2 shadow-sm ">
             <div class="card-body">
 
 
                 <h4 class="card-title">
-                    <a href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
+                    <a class="btn btn-info " href="{{ route('posts.show', $post->id) }}">{{ $post->title }}</a>
                 </h4>
 
                 <p class="card-text">
@@ -31,7 +31,7 @@
                     @if (auth()->id() == $post->owner->id )
 
                         <small class="float-right mr-2 ml-2">
-                            <a href="{{ route('posts.edit', $post->id) }}" class="float-right">edit your post</a>
+                            <a  href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success float-right">edit your post</a>
                         </small>
                     @endif
                 </p>
