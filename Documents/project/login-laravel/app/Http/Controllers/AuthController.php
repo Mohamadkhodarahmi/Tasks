@@ -10,6 +10,8 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Redirector;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
 
 class AuthController extends Controller
 {
@@ -18,20 +20,32 @@ class AuthController extends Controller
         return view('auth.login');
     }
 
-    public function login(Request $request): Application|string|Redirector|RedirectResponse|\Illuminate\Contracts\Foundation\Application
+    public function login(Request $request): Application|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
-        $validate = $request->validate([
+        $validator = validator::validate($request->all(),[
            'email'=>'required',
            'password'=>'required'
         ]);
-
-
-
-        if (Auth::attempt($validate)){
-            return redirect('/home')->with('success','successfully signed in ');
+        if ($validator) {
+            return redirect()->back()
+                ->with('errorForm', [$validator])
+                ->withInput();
         }
-        return redirect('login')->with($validate);
+
+
+        try {
+            if (Auth::attempt($validator)){
+                return redirect('/home')->with('success','successfully signed in ');
+            }
+        }
+        catch (\Exception $e){
+            return redirect()->back()
+                ->with('error', 'Error during the creation!');
+        }
     }
+
+//        return redirect('login')->with('error', 'Error during the creation!');
+
 
     public function registerPage(): Factory|Application|View|\Illuminate\Contracts\Foundation\Application
     {
@@ -40,19 +54,31 @@ class AuthController extends Controller
 
     public function register(Request $request): Application|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
-        $validate = $request->validate([
-           'name'=> 'required|min:1|max:100',
+
+        $validator = Validator::make($request->all(), [
+            'name'=> 'required|min:1|max:100',
             'email'=>'required|min:1|max:200',
             'password'=>'required|max:200'
         ]);
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->with('errorForm', $validator->errors()->getMessages())
+                ->withInput();
+        }
 
-        User::create([
-            'name'=>$request->input('name'),
-            'email'=>$request->input('email'),
-            'password'=>$request->input('password')
-        ]);
+        try {
+            User::create([
+                'name'=>$request->input('name'),
+                'email'=>$request->input('email'),
+                'password'=>$request->input('password')
+            ]);
 
-        return redirect('/home')->with('register','successfully registered');
+            return redirect('/home')
+                ->with('success', 'Created successfully!');
+        } catch (\Exception $e){
+            return redirect()->back()
+                ->with('error', 'Error during the creation!');
+        }
 
     }
 }

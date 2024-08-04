@@ -11,6 +11,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class Controller extends BaseController
 {
     use AuthorizesRequests, ValidatesRequests;
+
     public function __construct()
     {
         $this->middleware(function($request,$next){

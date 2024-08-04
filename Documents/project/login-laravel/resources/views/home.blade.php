@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
@@ -11,12 +10,15 @@
 </head>
 <body >
 
+
+@include('sweetalert::alert')
+@if(session::get('success'))
+    <p>{{session('success')}}</p>
+@endif
 @foreach($users as $user) @endforeach
 <div class="container">
     <h2>wellcome {{$user->name }} </h2>
 </div>
-
-
 
 </body>
 </html>

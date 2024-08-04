@@ -1,4 +1,3 @@
-@include('sweetalert::alert')
 
     <!doctype html>
 <html lang="en">
@@ -11,7 +10,10 @@
     <title>register</title>
 </head>
 <body class="bg-liner-gradient bg-info-subtle" >
-
+@include('sweetalert::alert')
+@if(session::get('error'))
+    <p>{{session('error')}}</p>
+@endif
 <div class="container col-4 mt-4 card rounded-5" >
     <h2 class="mt-4"> register page</h2>
     <form  method="post">
@@ -42,48 +44,5 @@
 
     </form>
 </div>
-<script type="text/javascript">
-    function deleteConfirmation(id) {
-        swal.fire({
-            title: "Delete?",
-            icon: 'question',
-            text: "Please ensure and then confirm!",
-            type: "warning",
-            showCancelButton: !0,
-            confirmButtonText: "Yes, delete it!",
-            cancelButtonText: "No, cancel!",
-            reverseButtons: !0
-        }).then(function (e) {
-
-            if (e.value === true) {
-                var CSRF_TOKEN = $('meta[name="csrf-token"]').attr('content');
-
-                $.ajax({
-                    type: 'POST',
-                    url: "{{url('/delete')}}/" + id,
-                    data: {_token: CSRF_TOKEN},
-                    dataType: 'JSON',
-                    success: function (results) {
-                        if (results.success === true) {
-                            swal.fire("Done!", results.message, "success");
-                            // refresh page after 2 seconds
-                            setTimeout(function(){
-                                location.reload();
-                            },2000);
-                        } else {
-                            swal.fire("Error!", results.message, "error");
-                        }
-                    }
-                });
-
-            } else {
-                e.dismiss;
-            }
-
-        }, function (dismiss) {
-            return false;
-        })
-    }
-</script>
 </body>
 </html>

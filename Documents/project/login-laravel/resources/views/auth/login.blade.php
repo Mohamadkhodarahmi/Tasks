@@ -9,7 +9,10 @@
     <title>login</title>
 </head>
 <body class="bg-liner-gradient bg-info-subtle" >
-
+@include('sweetalert::alert')
+@if(session::get('error'))
+    <p>{{session('error')}}</p>
+@endif
 <div class="container col-4 mt-4 card rounded-5" >
     <h2 class="mt-4"> login page</h2>
     <form  method="post">
