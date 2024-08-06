@@ -6,7 +6,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Post;
 use Illuminate\Contracts\Support\Renderable;
-
+use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
@@ -28,7 +28,7 @@ class HomeController extends Controller
      */
     public function index(): Renderable
     {
-        $posts=Post::all();
+        $posts = Post::with('owner')->get();
         return view('home')->with('posts' ,$posts);
     }
 }

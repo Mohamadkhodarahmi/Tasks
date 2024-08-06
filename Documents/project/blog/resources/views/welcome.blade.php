@@ -30,6 +30,7 @@
         <p>no posts yet</p>
     @endforelse
     </div>
+    {{ $posts->links('pagination::bootstrap-5') }}
 @endsection
 
 

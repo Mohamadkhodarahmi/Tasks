@@ -1,4 +1,4 @@
-<form action="{{ route('posts.store') }}" method="post">
+<form action="{{ route('posts.store') }}" method="post" enctype="multipart/form-data">
     @csrf
 
 
@@ -30,6 +30,11 @@
             <small class="text-danger">{{ $errors->first('body') }}</small>
         @endif
     </div>
+    <div class="my-2">
+        <label for="image">Image:</label>
+        <input class="form-control" type="file" name="image" id="image">
+    </div>
+
 
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Save Post</button>

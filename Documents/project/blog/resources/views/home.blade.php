@@ -6,12 +6,12 @@
         <h2 class="float-left">List of all projects</h2>
 
 
-        <a href="{{ route('posts.create') }}" class="btn btn-link float-right">Create new post</a>
+        <a href="{{ route('posts.create') }}" class="btn btn-secondary float-right">Create new post</a>
     </div>
 
 
     @forelse ($posts as $post)
-        <div class="card m-2 shadow-sm ">
+        <div class="card m-2 shadow ">
             <div class="card-body">
 
 
@@ -32,13 +32,14 @@
 
                         <small class="float-right mr-2 ml-2">
                             <a  href="{{ route('posts.edit', $post->id) }}" class="btn btn-outline-success float-right">edit your post</a>
+                            <a  href="{{ route('delete', $post->id) }}" class="btn btn-outline-danger float-right">delete your post</a>
                         </small>
                     @endif
                 </p>
             </div>
         </div>
     @empty
-        <p>No posts yet, stay tuned!</p>
+        <p>No posts yet</p>
     @endforelse
 
 @endsection

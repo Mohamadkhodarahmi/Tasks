@@ -13,21 +13,20 @@ use App\Http\Controllers\PostController;
 |
 */
 
-Route::get('/', function () {
-    $posts = \App\Models\Post::all();
-    return view('welcome',compact('posts'));
-});
+//Route::get('/', function () {
+//    $posts = \App\Models\Post::all();
+//    return view('welcome',compact('posts'));
+//});
 
 Auth::routes();
+Route::any('/show/{post}',[PostController::class,'destroy'])->name('delete');
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
 
-Route::group(['middleware' => 'auth'], function() {
+Route::group([], function() {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    Route::get('/home/{post}',function (\App\Models\Post $post){
-        dd($post);
-    });
+
 
     Route::resource('posts', PostController::class);
 });
