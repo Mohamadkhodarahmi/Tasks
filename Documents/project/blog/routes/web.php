@@ -23,10 +23,9 @@ Route::any('/show/{post}',[PostController::class,'destroy'])->name('delete');
 
 Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('home');
 
-Route::group([], function() {
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::resource('posts', PostController::class);
 
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::any('/deleted/{id}',[PostController::class,'getTrash'])->name('deleted');
+//Route::get('/comment',[\App\Http\Controllers\CommentController::class,'index'])->name('comment');
 
-
-    Route::resource('posts', PostController::class);
-});

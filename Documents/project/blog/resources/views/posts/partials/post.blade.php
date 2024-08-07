@@ -20,3 +20,13 @@
     </div>
 </div>
 
+@forelse($post->comments as $comment )
+    <x-showcomments :comment="$comment"/>
+
+@empty
+    <p>no comments yet</p>
+@endforelse
+
+
+
+

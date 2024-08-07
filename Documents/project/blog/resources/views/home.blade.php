@@ -8,6 +8,9 @@
 
         <a href="{{ route('posts.create') }}" class="btn btn-secondary float-right">Create new post</a>
     </div>
+    <div class="my-2 ">
+        <a href="{{ route('deleted',auth()->id()) }}" class="btn btn-secondary float-right">restore deleted post</a>
+    </div>
 
 
     @forelse ($posts as $post)

@@ -25,12 +25,14 @@
 
         @forelse($posts as $post )
             <x-product-component :post="$post"/>
-
-    @empty
-        <p>no posts yet</p>
-    @endforelse
+        @empty
+            <p>no posts yet</p>
+        @endforelse
     </div>
-    {{ $posts->links('pagination::bootstrap-5') }}
+    <div>
+        {{ $posts->links('pagination::bootstrap-5') }}
+    </div>
+
 @endsection
 
 

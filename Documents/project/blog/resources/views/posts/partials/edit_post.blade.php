@@ -1,4 +1,4 @@
-
+@auth
 <form action="{{ route('posts.update', $post->id) }}" method="post" enctype="multipart/form-data">
     @csrf
     @method('PATCH')
@@ -48,3 +48,7 @@
     </div>
 
 </form>
+@else
+    <?=redirect($post->path())?>
+@endauth
+
