@@ -31,6 +31,7 @@ class PostController extends Controller
      */
     public function store(PostStoreRequest $request): Application|Redirector|\Illuminate\Contracts\Foundation\Application|RedirectResponse
     {
+
         $post = Post::create($request->validated());
         return redirect($post->path());
     }

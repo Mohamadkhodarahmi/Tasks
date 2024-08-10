@@ -26,6 +26,6 @@ Route::get('/', [App\Http\Controllers\PostController::class, 'index'])->name('ho
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::resource('posts', PostController::class);
 
-Route::any('/deleted/{id}',[PostController::class,'getTrash'])->name('deleted');
-//Route::get('/comment',[\App\Http\Controllers\CommentController::class,'index'])->name('comment');
+Route::any('/deleted/{post}',[PostController::class,'getTrash'])->name('deleted');
+Route::post ('/{post}',[\App\Http\Controllers\CommentController::class, 'store'])->name('comment')->middleware('auth');
 
